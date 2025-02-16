@@ -1,12 +1,24 @@
+$root-colors: (
+  background: #ffffff,
+  foreground: #171717
+);
+
+$dark-colors: (
+  background: #0a0a0a,
+  foreground: #ededed
+);
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  @each $key, $value in $root-colors {
+    --#{$key}: #{$value};
+  }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    @each $key, $value in $dark-colors {
+      --#{$key}: #{$value};
+    }
   }
 }
 
@@ -40,3 +52,4 @@ a {
     color-scheme: dark;
   }
 }
+
