@@ -1,15 +1,19 @@
+"use client"
 import styles from "./index.module.scss";
 import Card from "./card";
+import UseTransaction from "@/context/useTransaction";
 
+import { currencyFormat } from "@/utils";
 
 export default function Cards() {
+    const { data : { cashIn, cashOut, total } } = UseTransaction();
 
     return (
         <div className={styles.container}>
             <div className={styles.cards}>
-                <Card title={'Entradas'} value={'R$ 2050,00'} type={'in'} />
-                <Card title={'Saídas'} value={'R$ 2000,00'} type={'out'} />
-                <Card title={'Saldo Total'} value={'R$ 50,00'} type={'all'} />
+                <Card title={'Entradas'} value={currencyFormat(cashIn)} type={'in'} />
+                <Card title={'Saídas'} value={currencyFormat(cashOut)} type={'out'} />
+                <Card title={'Saldo Total'} value={currencyFormat(total)} type={'all'} />
             </div>
         </div>
     );

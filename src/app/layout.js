@@ -1,5 +1,6 @@
 import "../assets/scss/globals.scss";
 import Header from "@/components/header";
+import { TransactionProvider } from "@/context/transactionProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,8 +11,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Header />
-        {children}
+        <TransactionProvider>
+          <Header />
+          {children}
+        </TransactionProvider>
       </body>
     </html>
   );
